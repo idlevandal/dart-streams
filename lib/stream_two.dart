@@ -15,6 +15,15 @@ class _StreamTwoState extends State<StreamTwo> {
   // final StreamController<int> controller = StreamController<int>.broadcast();
   StreamSubscription streamSubscription;
 
+  // manual stream
+  Stream<int> getDelayedValue() async* {
+    for (int i = 1; i <= 5; i++) {
+      await Future.delayed(Duration(seconds: 1));
+
+      yield i;
+    }
+  }
+
   @override
   void dispose() {
     controller.close();
@@ -68,12 +77,5 @@ class _StreamTwoState extends State<StreamTwo> {
           )
       ),
     );
-  }
-  Stream<int> getDelayedValue() async* {
-    for (int i = 1; i <= 5; i++) {
-      await Future.delayed(Duration(seconds: 1));
-
-      yield i;
-    }
   }
 }
