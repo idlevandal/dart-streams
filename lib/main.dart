@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:streams_app/stream_two.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Home(),
+      routes: {
+        '/streamTwo': (context) => StreamTwo(),
+      },
     );
   }
 }
@@ -81,6 +85,12 @@ class _HomeState extends State<Home> {
             );
           },
         )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/streamTwo');
+        },
+        child: Icon(Icons.arrow_forward),
       ),
     );
   }
